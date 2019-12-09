@@ -10,9 +10,6 @@ import * as elementAttributes from 'element-helper-json/element-attributes.json'
 import * as onsenTags from 'vue-onsenui-helper-json/vue-onsenui-tags.json';
 import * as onsenAttributes from 'vue-onsenui-helper-json/vue-onsenui-attributes.json';
 
-import * as bootstrapTags from 'bootstrap-vue-helper-json/tags.json';
-import * as bootstrapAttributes from 'bootstrap-vue-helper-json/attributes.json';
-
 import * as buefyTags from 'buefy-helper-json/tags.json';
 import * as buefyAttributes from 'buefy-helper-json/attributes.json';
 
@@ -21,7 +18,6 @@ import * as gridsomeAttributes from 'gridsome-helper-json/gridsome-attributes.js
 
 export const elementTagProvider = getExternalTagProvider('element', elementTags, elementAttributes);
 export const onsenTagProvider = getExternalTagProvider('onsen', onsenTags, onsenAttributes);
-export const bootstrapTagProvider = getExternalTagProvider('bootstrap', bootstrapTags, bootstrapAttributes);
 export const buefyTagProvider = getExternalTagProvider('buefy', buefyTags, buefyAttributes);
 export const gridsomeTagProvider = getExternalTagProvider('gridsome', gridsomeTags, gridsomeAttributes);
 

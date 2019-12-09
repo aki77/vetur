@@ -5,7 +5,6 @@ import { getRouterTagProvider } from './routerTags';
 import {
   elementTagProvider,
   onsenTagProvider,
-  bootstrapTagProvider,
   buefyTagProvider,
   gridsomeTagProvider,
   getRuntimeTagProvider
@@ -24,7 +23,6 @@ export let allTagProviders: IHTMLTagProvider[] = [
   getRouterTagProvider(),
   elementTagProvider,
   onsenTagProvider,
-  bootstrapTagProvider,
   buefyTagProvider,
   gridsomeTagProvider
 ];
@@ -40,7 +38,6 @@ export function getTagProviderSettings(workspacePath: string | null | undefined)
     router: false,
     element: false,
     onsen: false,
-    bootstrap: false,
     buefy: false,
     vuetify: false,
     quasar: false, // Quasar v1+
@@ -69,9 +66,6 @@ export function getTagProviderSettings(workspacePath: string | null | undefined)
     }
     if (dependencies['vue-onsenui']) {
       settings['onsen'] = true;
-    }
-    if (dependencies['bootstrap-vue']) {
-      settings['bootstrap'] = true;
     }
     if (dependencies['buefy']) {
       settings['buefy'] = true;
