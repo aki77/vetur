@@ -1,6 +1,7 @@
 import * as ts from 'typescript';
 import { getLastChild, buildDocumentation, getObjectLiteralExprFromExportExpr } from './componentInfo';
 import { T_TypeScript } from '../../services/dependencyService';
+import { hyphenate } from '../../utils/strings';
 
 interface InternalChildComponent {
   name: string;
@@ -79,9 +80,4 @@ export function getChildComponents(
 
     return result;
   }
-}
-
-const hyphenateRE = /\B([A-Z])/g;
-function hyphenate(word: string) {
-  return word.replace(hyphenateRE, '-$1').toLowerCase();
 }

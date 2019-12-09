@@ -73,7 +73,8 @@ export class HTMLMode implements LanguageMode {
       this.vueDocuments.refreshAndGet(embedded),
       tagProviders,
       this.config.emmet,
-      info
+      info,
+      this.config.vetur.completion.tagCasing
     );
   }
   doHover(document: TextDocument, position: Position) {

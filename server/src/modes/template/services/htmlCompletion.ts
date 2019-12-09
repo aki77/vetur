@@ -17,6 +17,7 @@ import { doVueInterpolationComplete } from './vueInterpolationCompletion';
 import { NULL_COMPLETION } from '../../nullMode';
 import { isInsideInterpolation } from './isInsideInterpolation';
 import { getModifierProvider, Modifier } from '../modifierProvider';
+import { hyphenate } from '../../../utils/strings';
 
 export function doComplete(
   document: TextDocument,
@@ -24,7 +25,8 @@ export function doComplete(
   htmlDocument: HTMLDocument,
   tagProviders: IHTMLTagProvider[],
   emmetConfig: emmet.EmmetConfiguration,
-  vueFileInfo?: VueFileInfo
+  vueFileInfo?: VueFileInfo,
+  tagCasing = 'kebab'
 ): CompletionList {
   const modifierProvider = getModifierProvider();
 
@@ -167,7 +169,7 @@ export function doComplete(
     const value = isFollowedBy(text, nameEnd, ScannerState.AfterAttributeName, TokenType.DelimiterAssign)
       ? ''
       : '="$1"';
-    const tag = currentTag.toLowerCase();
+    const tag = tagCasing === 'kebab' ? currentTag.toLowerCase() : hyphenate(currentTag);
     tagProviders.forEach(provider => {
       const priority = provider.priority;
       provider.collectAttributes(tag, (attribute, type, documentation) => {
@@ -257,7 +259,7 @@ export function doComplete(
       range = getReplaceRange(valueStart, valueEnd);
       addQuotes = true;
     }
-    const tag = currentTag.toLowerCase();
+    const tag = tagCasing === 'kebab' ? currentTag.toLowerCase() : hyphenate(currentTag);
     const attribute = currentAttributeName.toLowerCase();
     tagProviders.forEach(provider => {
       provider.collectValues(tag, attribute, value => {

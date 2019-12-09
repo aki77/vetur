@@ -50,3 +50,8 @@ function generateIndent(options: VLSFormatConfig) {
     return '\t';
   }
 }
+
+const hyphenateRE = /\B([A-Z])/g;
+export function hyphenate(word: string) {
+  return word.replace(hyphenateRE, '-$1').toLowerCase();
+}
